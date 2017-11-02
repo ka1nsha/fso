@@ -4,6 +4,9 @@ import pwd
 import json
 from hashlib import sha1
 
+
+
+### Check File Permissions ####
 def filepermissions(filepath):
     try:
         filename = filepath.split("/")[-1]
@@ -16,11 +19,14 @@ def filepermissions(filepath):
         return json.dumps(filedesc,indent=4)
     except:
         return "Undefined Error"
-
+### return File SHA1 ###
 def filehash(filepath):
     if os.path.isfile(filepath):
         file = open(filepath,'rb').read()
         if not file:
             return "File is empty"
         return sha1(file).hexdigest()
-    return "Is the file?"
+    return False
+
+
+#print(filepermissions("/home/ka1/hakaneryavuz.txt"))
